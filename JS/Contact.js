@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const formData = {
             name: document.getElementById('name').value.trim(),
             email: document.getElementById('email').value.trim(),
-            phone: document.getElementById('phone').value.trim() || 'Not provided',
+            phone: document.getElementById('phone').value.trim(),
             message: document.getElementById('message').value.trim()
         };
         
@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
         try {
             // Choose one of the methods below:
             // Method 1: EmailJS (Recommended - Free tier available)
-            await sendWithEmailJS(formData);
+            // await sendWithEmailJS(formData);
             
             // Method 2: Formspree (Alternative)
             // await sendWithFormspree(formData);
@@ -55,6 +55,8 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 3000);
         }
     });
+
+
     
     // ============================================
     // METHOD 1: EmailJS (Recommended)
@@ -65,33 +67,33 @@ document.addEventListener('DOMContentLoaded', function() {
     // 3. Create email template
     // 4. Get Service ID, Template ID, and Public Key
     
-    async function sendWithEmailJS(data) {
+// async function sendWithEmailJS(data) {
         // Add EmailJS SDK to your HTML:
         // <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
         
         // Initialize EmailJS (add this in your HTML or here)
-        emailjs.init("YOUR_PUBLIC_KEY"); // Replace with your public key
+    //     emailjs.init("IzUiIN64qaPz4pBOf"); // Replace with your public key
         
-        const templateParams = {
-            from_name: data.name,
-            from_email: data.email,
-            phone: data.phone,
-            message: data.message,
-            to_email: "glanpritheshmonis@gmail.com"
-        };
+    //     const templateParams = {
+    //         from_name: data.name,
+    //         from_email: data.email,
+    //         phone: data.phone,
+    //         message: data.message,
+    //         to_email: "glanpritheshmonis@gmail.com"
+    //     };
         
-        const response = await emailjs.send(
-            'YOUR_SERVICE_ID',    // Replace with your service ID
-            'YOUR_TEMPLATE_ID',   // Replace with your template ID
-            templateParams
-        );
+    //     const response = await emailjs.send(
+    //         'service_t7t9hf9',    // Replace with your service ID
+    //         'template_czjf8bh',   // Replace with your template ID
+    //         templateParams
+    //     );
         
-        if (response.status === 200) {
-            handleSuccess();
-        } else {
-            throw new Error('Failed to send');
-        }
-    }
+    //     if (response.status === 200) {
+    //         handleSuccess();
+    //     } else {
+    //         throw new Error('Failed to send');
+    //     }
+    // }
     
     // ============================================
     // METHOD 2: Formspree (Alternative)
@@ -101,52 +103,61 @@ document.addEventListener('DOMContentLoaded', function() {
     // 2. Create new form
     // 3. Get your form endpoint
     
-    async function sendWithFormspree(data) {
-        const response = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        });
+
+
+
+    // async function sendWithFormspree(data) {
+    //     const response = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+    //         method: 'POST',
+    //         headers: {
+    //             'Content-Type': 'application/json'
+    //         },
+    //         body: JSON.stringify(data)
+    //     });
         
-        if (response.ok) {
-            handleSuccess();
-        } else {
-            throw new Error('Failed to send');
-        }
-    }
+    //     if (response.ok) {
+    //         handleSuccess();
+    //     } else {
+    //         throw new Error('Failed to send');
+    //     }
+    // }
+
+
+
     
-    // ============================================
-    // METHOD 3: Web3Forms (Alternative)
-    // ============================================
-    // Setup: https://web3forms.com/
-    // 1. Get free access key
-    // 2. Add to form
+    // // ============================================
+    // // METHOD 3: Web3Forms (Alternative)
+    // // ============================================
+    // // Setup: https://web3forms.com/
+    // // 1. Get free access key
+    // // 2. Add to form
     
-    async function sendWithWeb3Forms(data) {
-        const formData = new FormData();
-        formData.append('access_key', 'YOUR_ACCESS_KEY'); // Replace with your key
-        formData.append('name', data.name);
-        formData.append('email', data.email);
-        formData.append('phone', data.phone);
-        formData.append('message', data.message);
-        formData.append('subject', 'New Contact Form Submission');
+    // async function sendWithWeb3Forms(data) {
+    //     const formData = new FormData();
+    //     formData.append('access_key', 'YOUR_ACCESS_KEY'); // Replace with your key
+    //     formData.append('name', data.name);
+    //     formData.append('email', data.email);
+    //     formData.append('phone', data.phone);
+    //     formData.append('message', data.message);
+    //     formData.append('subject', 'New Contact Form Submission');
         
-        const response = await fetch('https://api.web3forms.com/submit', {
-            method: 'POST',
-            body: formData
-        });
+    //     const response = await fetch('https://api.web3forms.com/submit', {
+    //         method: 'POST',
+    //         body: formData
+    //     });
         
-        const result = await response.json();
+    //     const result = await response.json();
         
-        if (result.success) {
-            handleSuccess();
-        } else {
-            throw new Error('Failed to send');
-        }
-    }
+    //     if (result.success) {
+    //         handleSuccess();
+    //     } else {
+    //         throw new Error('Failed to send');
+    //     }
+    // }
     
+
+
+
     // ============================================
     // Helper Functions
     // ============================================
@@ -192,7 +203,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // This opens the user's email client with pre-filled data
 // Uncomment to use this as a fallback
 
-/*
+
 function sendViaEmailClient(data) {
     const subject = encodeURIComponent(`Contact from ${data.name}`);
     const body = encodeURIComponent(
@@ -206,4 +217,3 @@ function sendViaEmailClient(data) {
     
     handleSuccess();
 }
-*/

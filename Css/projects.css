@@ -2,7 +2,7 @@
 .projects {
   min-height: auto;       
   display: block;
-  padding: 80px 10%;
+  padding: 60px 10%;
 }
 
 /* .section-title, */
@@ -15,7 +15,7 @@
 
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
   gap: 30px;
 
 }
@@ -79,12 +79,12 @@
 
 .project-card:hover .project-overlay h3{
   opacity: 0;
-  animation: fadeInUp 0.5s ease 0.5s forwards;
+  animation: fadeInUp 0.3s ease 0.3s forwards;
 }
 
 .project-card:hover .project-overlay p{
   opacity: 0;
-  animation: fadeInUp 0.8s ease 0.8s forwards;
+  animation: fadeInUp 0.6s ease 0.6s forwards;
 }
 
 .project-title {
@@ -118,7 +118,7 @@
 
 .project-card:hover .project-overlay .tech-stack {
   opacity: 0;
-  animation: iconPop 1s ease 0.5s forwards;
+  animation: iconPop 0.8s ease 0.5s forwards;
 }
 
 @keyframes iconPop {
